@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: vs-ai-agent
+  ai:
+    dashscope:
+      api-key: sk-ab4f5cec70e04a869795fc8852fb83f2
+      chat:
+        options:
+          model: qwen-turbo
+          stream: true
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+    mcp:
+      client:
+        sse:
+          connections:
+            server1:
+              url: http://43.138.28.114:8123
+        enabled: true
+#        stdio:
+#          servers-configuration: classpath:mcp-servers.json
+
+  datasource:
+    url: jdbc:postgresql://182.92.115.91:5432/ai_agent
+    username: postgres
+    password: wsggs139
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+
+# knife4j config
+knife4j:
+  setting:
+    language: zh_cn
+  basic:
+    enable: true
+    username: vs_picture_root
+    password: vs_picture_123456
+
+
+# 修改日志级别，查看 Spring AI 更多调用细节
+logging:
+  level:
+    org.springframework.ai: DEBUG
+
+search-api:
+  api-key: jhTvSFi5tSUwNrxv1u5mCwna
+
+image-api:
+  api-key: TuRLh8yzW1DNZGYjWKzZwlY0TV1VbewO1RiaBKF9afYictxDz6SW8Jxf
+
+
+
+

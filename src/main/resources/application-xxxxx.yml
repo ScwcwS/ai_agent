@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: your-app
+  profiles:
+    active: local
+  ai:
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+    dashscope:
+      api-key: xxxx
+      chat:
+        options:
+          model: "you model name"
+          stream: true
+    mcp:
+      client:
+        sse:
+          connections:
+            server1:
+              url: "mcp_url"
+        enabled: true
+#        stdio:
+#          servers-configuration: classpath:mcp-servers.json
+
+  datasource:
+    url: "Pgvector_url" # 支持向量插件的pg数据库
+    username: username
+    password: password
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+# springdoc-openapi config
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.vs.vsaiagent.controller
+# knife4j config
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# 修改日志级别，查看 Spring AI 更多调用细节
+logging:
+  level:
+    org.springframework.ai: DEBUG
+
+search-api:
+  api-key: xxxx
+
+image-api:
+  api-key: xxxx
