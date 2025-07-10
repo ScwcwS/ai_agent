@@ -1,7 +1,7 @@
 ### CUSTOM ###
 application.yml
 application-local.yml
-application-local-prod.yml
+application-prod.yml
 mcp-servers.json
 tmp
 
